@@ -1,4 +1,4 @@
-import * as UserActionCreators from "./user";
+import * as UserActionCreators from "./users";
 import * as TodoActionCreators from "./todo";
 import * as CounterActionCreators from "./counter";
 

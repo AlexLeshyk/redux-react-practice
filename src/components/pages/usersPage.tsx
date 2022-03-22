@@ -32,6 +32,7 @@ const UsersPage = () => {
 
   useEffect(() => {
     fetchUsers();
+    // eslint-disable-next-line
   }, []);
 
   let maxId = 10;
@@ -55,7 +56,7 @@ const UsersPage = () => {
     setVisible(true);
   };
 
-  if (loading) {
+  if (loading === "loading") {
     return <h1>Loading is coming...</h1>;
   }
 
@@ -74,7 +75,10 @@ const UsersPage = () => {
         <button onClick={decrementCounter} className="button button__main">
           <div className="inner">Decrement</div>
         </button>
-        <button onClick={rdnCounter} className="button button__main">
+        <button
+          onClick={() => rdnCounter(Math.floor(Math.random() * 10))}
+          className="button button__main"
+        >
           <div className="inner">Random multiple</div>
         </button>
       </div>

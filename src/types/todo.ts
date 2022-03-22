@@ -1,6 +1,6 @@
 export interface TodoState {
   todos: ITodo[];
-  loading: boolean;
+  loading: string;
   error: null | string;
   page: number;
   limit: number;

@@ -24,7 +24,7 @@ export interface IAddress {
 
 export interface UsersState {
   users: IUser[];
-  loading: boolean;
+  loading: string;
   error: null | string;
 }
 

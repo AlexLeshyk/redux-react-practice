@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
-import { fetchTodos } from "../store/action-creators/todo";
-import { useDispatch } from "react-redux";
 import TodoItem from "./todoItem";
 import TodoPagination from "./todoPagination";
-import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useActions } from "../hooks/useAction";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/reducers";
 
 const TodoList: React.FC = () => {
-  const { loading, error, todos, page, limit } = useTypedSelector((state) => state.todo);
-  const dispatch = useDispatch();
+  const { loading, error, todos, page, limit } = useSelector((state: RootState) => state.todo);
+  const { fetchTodos } = useActions();
   const pages = [1, 2, 3, 4, 5, 6, 7, 8];
   useEffect(() => {
-    dispatch(fetchTodos(page, limit));
+    fetchTodos({ page, limit });
+    // eslint-disable-next-line
   }, [page]);
 
-  if (loading) {
+  if (loading === "loading") {
     return <h1>Идет загрузка...</h1>;
   }
 

@@ -21,7 +21,8 @@ const UserSearch: React.FC<UserFilterProps> = ({ filter, setFilter }) => {
   };
   return (
     <div>
-      <input type="search" value={filter.query} onChange={onSearchHandler} />
+      <label htmlFor="user-search">Search by name: </label>
+      <input id="user-search" type="search" value={filter.query} onChange={onSearchHandler} />
       <select
         value={filter.sort}
         onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {

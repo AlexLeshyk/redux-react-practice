@@ -23,4 +23,4 @@ interface RandomAction {
   payload: number;
 }
 
-export type CunterAction = IncrementAction | DecrememntAction | RandomAction;
+export type CounterAction = IncrementAction | DecrememntAction | RandomAction;
