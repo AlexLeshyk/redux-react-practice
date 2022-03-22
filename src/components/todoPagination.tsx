@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useActions } from "../hooks/useAction";
-import { RootState } from "../store/reducers";
+import { RootState } from "../store";
 
 interface TodoPaginationProps {
   pageItem: number;

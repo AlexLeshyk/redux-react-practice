@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useActions } from "../../hooks/useAction";
 import { useUsersList } from "../../hooks/useUsersList";
-import { RootState } from "../../store/reducers";
+import { RootState } from "../../store";
 import { IUser } from "../../types/users";
 import Modal from "../common/modal/mortal";
 import Portal from "../common/modal/portal";

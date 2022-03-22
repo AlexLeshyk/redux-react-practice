@@ -3,7 +3,7 @@ import TodoItem from "./todoItem";
 import TodoPagination from "./todoPagination";
 import { useActions } from "../hooks/useAction";
 import { useSelector } from "react-redux";
-import { RootState } from "../store/reducers";
+import { RootState } from "../store";
 
 const TodoList: React.FC = () => {
   const { loading, error, todos, page, limit } = useSelector((state: RootState) => state.todo);
