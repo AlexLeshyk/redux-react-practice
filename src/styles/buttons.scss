@@ -93,4 +93,8 @@
   &:disabled {
     filter: grayscale(0.5);
   }
+
+  & + button {
+    margin-left: 10px;
+  }
 }

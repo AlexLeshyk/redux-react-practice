@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useActions } from "../../hooks/useAction";
 import { useUsersList } from "../../hooks/useUsersList";
 import { RootState } from "../../store";
@@ -23,10 +23,18 @@ import UserSearch from "../userSearch";
 // }
 const UsersPage = () => {
   const [filter, setFilter] = useState<{ sort: string; query: string }>({ sort: "", query: "" });
-  const { fetchUsers, deleteUserById, addUser, incrementCounter, decrementCounter, rdnCounter } =
-    useActions();
+  const {
+    fetchUsers,
+    deleteUserById,
+    addUser,
+    incrementCounter,
+    decrementCounter,
+    rdnCounter,
+    incrementByAmount,
+  } = useActions();
   const { users, error, loading } = useSelector((state: RootState) => state.user);
   const { value, num } = useSelector((state: RootState) => state.counter);
+  const dispatch = useDispatch();
 
   const [visible, setVisible] = useState<boolean>(false);
 
@@ -80,6 +88,9 @@ const UsersPage = () => {
           className="button button__main"
         >
           <div className="inner">Random multiple</div>
+        </button>
+        <button onClick={() => incrementByAmount(5)} className="button button__main">
+          <div className="inner">Incr on 5</div>
         </button>
       </div>
       <button onClick={openModal} className="button button__main button__long">

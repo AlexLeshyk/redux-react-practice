@@ -9,6 +9,7 @@ const MainPage = lazy(() => import("./components/pages/mainPage"));
 const ComicsPage = lazy(() => import("./components/pages/comicsPage"));
 const FormComponent = lazy(() => import("./components/pages/singleFormPage"));
 const SinglePage = lazy(() => import("./components/pages/singlePage"));
+const PostsPage = lazy(() => import("./components/pages/postsPage"));
 const SingleComicLayout = lazy(
   () => import("./components/pages/singleComicLayout/singleComicLayout")
 );
@@ -36,6 +37,7 @@ const App = () => {
               />
               <Route path="/users" element={<UsersPage />} />
               <Route path="/form" element={<FormComponent />} />
+              <Route path="/posts" element={<PostsPage />} />
               <Route path="*" element={<Page404 />} />
             </Routes>
           </Suspense>

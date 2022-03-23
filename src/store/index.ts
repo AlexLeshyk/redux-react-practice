@@ -3,11 +3,13 @@ import { combineReducers } from "redux";
 import counter from "../store/slices/counter";
 import users from "../store/slices/users";
 import todos from "../store/slices/todo";
+import postsReducer from "../store/slices/postsSlice";
 
 const rootReducer = combineReducers({
   user: users,
   todo: todos,
   counter,
+  posts: postsReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

@@ -11,9 +11,11 @@ const TodoPagination: React.FC<TodoPaginationProps> = ({ pageItem }) => {
   const { page } = useSelector((state: RootState) => state.todo);
   const { setTodoPage } = useActions();
 
+  const setPage = () => setTodoPage(pageItem);
+
   return (
     <div
-      onClick={() => setTodoPage(pageItem)}
+      onClick={setPage}
       style={{
         border: pageItem === page ? "2px solid green" : "1px solid gray",
         padding: "5px 10px",
