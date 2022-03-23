@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Dispatch } from "react";
 
 const initialState = { value: 0, num: 1 };
 

@@ -34,7 +34,7 @@ const UsersPage = () => {
   } = useActions();
   const { users, error, loading } = useSelector((state: RootState) => state.user);
   const { value, num } = useSelector((state: RootState) => state.counter);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [visible, setVisible] = useState<boolean>(false);
 

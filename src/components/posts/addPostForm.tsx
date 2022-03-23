@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
+
+import { postAdded } from "../../store/slices/postsSlice";
 
 export const AddPostForm = () => {
-  // const [title, setTitle] = useState("");
-  // const [content, setContent] = useState("");
   const [inputValue, setInputValue] = useState<{
     postTitle: string;
     postContent: string;
@@ -10,15 +12,24 @@ export const AddPostForm = () => {
     postContent: "",
     postTitle: "",
   });
+  const dispatch = useDispatch();
+
+  const onSavePost = () => {
+    if (inputValue.postContent && inputValue.postTitle) {
+      dispatch(postAdded({ title: inputValue.postContent, content: inputValue.postContent }));
+      setInputValue({
+        ...inputValue,
+        postTitle: "",
+        postContent: "",
+      });
+    }
+  };
 
   const onInputChanged = (
     e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
-  // const onContentChanged = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-  //   setInputValue(e.target.value);
-  // };
 
   return (
     <section>
@@ -44,9 +55,13 @@ export const AddPostForm = () => {
           />
         </div>
         <div className="form-control">
-          <button type="button">Save Post</button>
+          <button type="button" className="button button__main" onClick={onSavePost}>
+            <div className="inner">Save Post</div>
+          </button>
         </div>
       </form>
     </section>
   );
 };
+
+export default AddPostForm;
