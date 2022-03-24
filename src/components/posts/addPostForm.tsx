@@ -1,7 +1,6 @@
 import { nanoid } from "@reduxjs/toolkit";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useActions } from "../../hooks/useAction";
 import { RootState } from "../../store";
 
 import { postAdded } from "../../store/slices/postsSlice";
@@ -14,14 +13,8 @@ export const AddPostForm = () => {
     postContent: "",
     postTitle: "",
   });
-  const { fetchUsers } = useActions();
   const [userId, setUserId] = useState("");
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    fetchUsers();
-    // eslint-disable-next-line
-  }, []);
 
   const users = useSelector((state: RootState) => state.user.users);
 

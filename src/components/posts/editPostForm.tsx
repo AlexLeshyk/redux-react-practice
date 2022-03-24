@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { RootState } from "../../store";
 
-import { postUpdated } from "../../store/slices/postsSlice";
+import { postUpdated, selectPostById } from "../../store/slices/postsSlice";
 
 const EditPostForm = () => {
   const match = useParams();
   const { postId } = match;
 
-  const post = useSelector((state: RootState) => state.posts.find((post) => post.id === postId));
+  const post = useSelector((state: RootState) => selectPostById(state, postId));
   const [inputValue, setInputValue] = useState<{
     postTitle: string | undefined;
     postContent: string | undefined;

@@ -1,5 +1,5 @@
 export interface IPost {
-  id: number;
+  id: string;
   title: string;
   content: string;
   date: string;
@@ -15,4 +15,10 @@ export interface IPostReaction {
   heart: number;
   rocket: number;
   eyes: number;
+}
+
+export interface IPostState {
+  posts: IPost[];
+  status: string;
+  error: null | string | undefined;
 }
