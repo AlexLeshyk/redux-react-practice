@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useActions } from "../../hooks/useAction";
 import { useUsersList } from "../../hooks/useUsersList";
 import { RootState } from "../../store";
