@@ -5,13 +5,13 @@ import { IUser } from "../../types/posts";
 
 const initialState: IUser[] = [];
 
-export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
+export const fetchUsers = createAsyncThunk("postUsers/fetchUsers", async () => {
   const response = await client.get("/fakeApi/users");
   return response.data;
 });
 
 const usersSlice = createSlice({
-  name: "users",
+  name: "postUsers",
   initialState,
   reducers: {},
   extraReducers(builder) {
