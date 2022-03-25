@@ -1,9 +1,10 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "../../store";
 
-import { postAdded } from "../../store/slices/postsSlice";
+import { addNewPost } from "../../store/slices/postsSlice";
+import { selectAllUsers } from "../../store/slices/usersSlice";
 
 export const AddPostForm = () => {
   const [inputValue, setInputValue] = useState<{
@@ -14,39 +15,72 @@ export const AddPostForm = () => {
     postTitle: "",
   });
   const [userId, setUserId] = useState("");
-  const dispatch = useDispatch();
+  const [addRequestStatus, setAddRequestStatus] = useState("idle");
+  const dispatch = useAppDispatch();
 
-  const users = useSelector((state: RootState) => state.user.users);
+  const users = useSelector(selectAllUsers);
 
-  const onSavePost = () => {
-    if (inputValue.postContent && inputValue.postTitle) {
-      dispatch(
-        postAdded({
-          id: nanoid(),
-          date: new Date().toISOString(),
-          title: inputValue.postTitle,
-          content: inputValue.postContent,
-          user: userId,
-          reactions: {
-            thumbsUp: 0,
-            hooray: 0,
-            heart: 0,
-            rocket: 0,
-            eyes: 0,
-          },
-        })
-      );
-      setInputValue({
-        ...inputValue,
-        postTitle: "",
-        postContent: "",
-      });
-      setUserId("");
+  const onSavePost = async () => {
+    // if (inputValue.postContent && inputValue.postTitle) {
+    //   dispatch(
+    //     postAdded({
+    //       id: nanoid(),
+    //       date: new Date().toISOString(),
+    //       title: inputValue.postTitle,
+    //       content: inputValue.postContent,
+    //       user: userId,
+    //       reactions: {
+    //         thumbsUp: 0,
+    //         hooray: 0,
+    //         heart: 0,
+    //         rocket: 0,
+    //         eyes: 0,
+    //       },
+    //     })
+    //   );
+    //   setInputValue({
+    //     ...inputValue,
+    //     postTitle: "",
+    //     postContent: "",
+    //   });
+    //   setUserId("");
+    // }
+    if (canSave) {
+      try {
+        setAddRequestStatus("pending");
+        await dispatch(
+          addNewPost({
+            id: nanoid(),
+            date: new Date().toISOString(),
+            title: inputValue.postTitle,
+            content: inputValue.postContent,
+            user: userId,
+            reactions: {
+              thumbsUp: 0,
+              hooray: 0,
+              heart: 0,
+              rocket: 0,
+              eyes: 0,
+            },
+          })
+        ).unwrap();
+        setInputValue({
+          ...inputValue,
+          postTitle: "",
+          postContent: "",
+        });
+        setUserId("");
+      } catch (err) {
+        console.error("Failed to save the post: ", err);
+      } finally {
+        setAddRequestStatus("idle");
+      }
     }
   };
 
   const canSave =
-    Boolean(inputValue.postContent) && Boolean(inputValue.postTitle) && Boolean(userId);
+    [inputValue.postContent, inputValue.postTitle, userId].every(Boolean) &&
+    addRequestStatus === "idle";
 
   const usersOptions = users.map((user) => (
     <option key={user.id} value={user.id}>

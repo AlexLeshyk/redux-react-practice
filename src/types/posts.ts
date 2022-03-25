@@ -7,7 +7,12 @@ export interface IPost {
   reactions: IPostReaction;
 }
 
-export type IPostkeys = "thumbsUp" | "hooray" | "heart" | "rocket" | "eyes";
+export interface IUser {
+  id: string;
+  name: string;
+}
+
+export type Reactionkeys = "thumbsUp" | "hooray" | "heart" | "rocket" | "eyes";
 
 export interface IPostReaction {
   thumbsUp: number;
@@ -15,6 +20,17 @@ export interface IPostReaction {
   heart: number;
   rocket: number;
   eyes: number;
+}
+
+export interface IReaction {
+  reaction: Reactionkeys;
+  postId: string;
+}
+
+export interface IPostSaved {
+  id: string | undefined;
+  title: string;
+  content: string;
 }
 
 export interface IPostState {

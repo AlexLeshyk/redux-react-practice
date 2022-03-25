@@ -52,7 +52,6 @@ const AppHeader = () => {
           /
           <li className="app__menu_item">
             <NavLink
-              end
               className={({ isActive }) => (isActive ? "app__menu_link active" : "app__menu_link")}
               to="/posts"
             >

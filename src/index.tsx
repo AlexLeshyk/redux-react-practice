@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import "./styles/styles.scss";
 
-import { fetchUsers } from "./store/slices/users";
+import { fetchUsers } from "./store/slices/usersSlice";
 
 import { worker } from "./api/server";
 

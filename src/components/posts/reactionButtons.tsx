@@ -17,14 +17,13 @@ interface ReactionButtonsProps {
 const ReactionButtons: FC<ReactionButtonsProps> = ({ post }) => {
   const dispatch = useDispatch();
 
-  console.log("post", post);
-
   const reactionButtons = Object.entries(reactionEmoji).map(([name, emoji]) => {
     return (
       <button
         key={name}
         type="button"
         className="muted-button reaction-button"
+        // @ts-ignore
         onClick={() => dispatch(reactionAdded({ postId: post.id, reaction: name }))}
       >
         {emoji} {post.reactions[name]}
