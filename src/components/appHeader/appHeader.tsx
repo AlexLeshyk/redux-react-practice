@@ -58,6 +58,15 @@ const AppHeader = () => {
               Posts List
             </NavLink>
           </li>
+          /
+          <li className="app__menu_item">
+            <NavLink
+              className={({ isActive }) => (isActive ? "app__menu_link active" : "app__menu_link")}
+              to="/users-posts"
+            >
+              Users of posts
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>

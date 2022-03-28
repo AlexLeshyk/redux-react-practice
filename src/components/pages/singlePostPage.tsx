@@ -30,9 +30,12 @@ const SinglePostPage: FC = () => {
         <TimeAgo timestamp={post.date} />
         <div>
           <ReactionButtons post={post} />
-          <Link to={`/editPost/${post.id}`} className="button button__main">
-            <div className="inner">Edit Post</div>
-          </Link>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <Link to={`/editPost/${post.id}`} className="button button__main">
+              <div className="inner">Edit Post</div>
+            </Link>
+            <Link to={`/posts`}>back to posts!</Link>
+          </div>
         </div>
       </article>
     </section>

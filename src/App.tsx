@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AppHeader from "./components/appHeader/appHeader";
-import { UsersPage } from "./components/pages";
+import UserPage from "./components/pages/userPage";
 import Spinner from "./components/spinner/spinner";
 
 const Page404 = lazy(() => import("./components/pages/404"));
@@ -12,6 +12,8 @@ const SinglePage = lazy(() => import("./components/pages/singlePage"));
 const PostsPage = lazy(() => import("./components/pages/postsPage"));
 const SinglePostPage = lazy(() => import("./components/pages/singlePostPage"));
 const EditPostForm = lazy(() => import("./components/posts/editPostForm"));
+const UsersPage = lazy(() => import("./components/pages/usersPage"));
+const UsersList = lazy(() => import("./components/users/usersList"));
 const SingleComicLayout = lazy(
   () => import("./components/pages/singleComicLayout/singleComicLayout")
 );
@@ -41,6 +43,15 @@ const App = () => {
               <Route path="/form" element={<FormComponent />} />
               <Route path="/posts" element={<PostsPage />} />
               <Route path="/posts/:postId" element={<SinglePostPage />} />
+              <Route
+                path="/users-posts"
+                element={
+                  <>
+                    <UsersList />
+                  </>
+                }
+              />
+              <Route path="/users-posts/:userId" element={<UserPage />} />
               <Route path="/editPost/:postId" element={<EditPostForm />} />
               <Route path="*" element={<Page404 />} />
             </Routes>
