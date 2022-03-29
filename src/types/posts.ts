@@ -38,3 +38,12 @@ export interface IPostState {
   status: string;
   error: null | string | undefined;
 }
+
+export interface INote {
+  id: string;
+  message: string;
+  date: string;
+  user: string;
+  read: boolean;
+  isNew: boolean;
+}

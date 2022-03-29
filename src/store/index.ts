@@ -5,6 +5,7 @@ import users from "../store/slices/users";
 import todos from "../store/slices/todo";
 import postsReducer from "../store/slices/postsSlice";
 import usersReducer from "../store/slices/usersSlice";
+import notificationsReducer from "../store/slices/notificationsSlice";
 import { useDispatch } from "react-redux";
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   counter,
   posts: postsReducer,
   postUsers: usersReducer,
+  notifications: notificationsReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

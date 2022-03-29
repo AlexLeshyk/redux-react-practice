@@ -20,6 +20,7 @@ const SingleComicLayout = lazy(
 const SingleCharacterLayout = lazy(
   () => import("./components/pages/singleCharacterLayout/singleCharacterLayout")
 );
+const NotificationsList = lazy(() => import("./components/notifications/notificationsList"));
 
 const App = () => {
   return (
@@ -43,16 +44,10 @@ const App = () => {
               <Route path="/form" element={<FormComponent />} />
               <Route path="/posts" element={<PostsPage />} />
               <Route path="/posts/:postId" element={<SinglePostPage />} />
-              <Route
-                path="/users-posts"
-                element={
-                  <>
-                    <UsersList />
-                  </>
-                }
-              />
+              <Route path="/users-posts" element={<UsersList />} />
               <Route path="/users-posts/:userId" element={<UserPage />} />
               <Route path="/editPost/:postId" element={<EditPostForm />} />
+              <Route path="/notifications" element={<NotificationsList />} />
               <Route path="*" element={<Page404 />} />
             </Routes>
           </Suspense>
