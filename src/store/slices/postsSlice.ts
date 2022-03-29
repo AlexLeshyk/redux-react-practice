@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction, createSelector } from "@reduxjs/toolkit";
 import { RootState } from "..";
 import { IPost, IPostSaved, IPostState, IReaction } from "../../types/posts";
 import { client } from "../../api/client";
@@ -63,6 +63,11 @@ export const selectAllPosts = (state: RootState) => {
 export const selectPostById = (state: RootState, postId: string | undefined) => {
   return state.posts.posts.find((post: IPost) => post.id === postId);
 };
+
+export const selectPostsByUser = createSelector(
+  [selectAllPosts, (state: RootState, userId: string | undefined) => userId],
+  (posts, userId) => posts.filter((post) => post.user === userId)
+);
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   const response = await client.get("/fakeApi/posts");
