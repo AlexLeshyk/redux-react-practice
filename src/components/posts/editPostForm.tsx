@@ -7,7 +7,7 @@ import { postUpdated, selectPostById } from "../../store/slices/postsSlice";
 
 const EditPostForm = () => {
   const match = useParams();
-  const { postId } = match;
+  const { postId = "" } = match;
 
   const post = useSelector((state: RootState) => selectPostById(state, postId));
   const [inputValue, setInputValue] = useState<{

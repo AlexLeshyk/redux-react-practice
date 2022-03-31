@@ -60,12 +60,12 @@ export const selectAllPosts = (state: RootState) => {
   return state.posts.posts;
 };
 
-export const selectPostById = (state: RootState, postId: string | undefined) => {
+export const selectPostById = (state: RootState, postId: string) => {
   return state.posts.posts.find((post: IPost) => post.id === postId);
 };
 
 export const selectPostsByUser = createSelector(
-  [selectAllPosts, (state: RootState, userId: string | undefined) => userId],
+  [selectAllPosts, (state: RootState, userId: string) => userId],
   (posts, userId) => posts.filter((post) => post.user === userId)
 );
 

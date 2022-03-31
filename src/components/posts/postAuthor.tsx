@@ -7,8 +7,10 @@ import { selectUserNameById } from "../../store/slices/usersSlice";
 interface PostAuthorProps {
   userId: string;
 }
-export const PostAuthor: FC<PostAuthorProps> = ({ userId }) => {
+const PostAuthor: FC<PostAuthorProps> = ({ userId }) => {
   const author = useSelector((state: RootState) => selectUserNameById(state, userId));
 
   return <span className="author">by {author ? author.name : "Unknown author"}</span>;
 };
+
+export default PostAuthor;

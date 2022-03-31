@@ -1,15 +1,14 @@
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { RootState } from "../../store";
 import { selectPostsByUser } from "../../store/slices/postsSlice";
 import { selectUserNameById } from "../../store/slices/usersSlice";
 
 const UserPage = () => {
   const match = useParams();
-  const { userId } = match;
+  const { userId = "" } = match;
 
-  const user = useTypedSelector((state) => selectUserNameById(state, userId));
+  const user = useSelector((state: RootState) => selectUserNameById(state, userId));
   const postsForUser = useSelector((state: RootState) => selectPostsByUser(state, userId));
 
   const postTitles = postsForUser.map((post) => (

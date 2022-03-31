@@ -23,7 +23,7 @@ const usersSlice = createSlice({
 
 export default usersSlice.reducer;
 
-export const selectUserNameById = (state: RootState, userId: string | undefined) => {
+export const selectUserNameById = (state: RootState, userId: string) => {
   return state.postUsers.find((user: IUser) => user.id === userId);
 };
 
