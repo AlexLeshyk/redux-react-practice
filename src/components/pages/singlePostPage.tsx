@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { RootState } from "../../store";
 import { selectPostById } from "../../store/slices/postsSlice";
-import { PostAuthor } from "../posts/postAuthor";
+import PostAuthor from "../posts/postAuthor";
 import ReactionButtons from "../posts/reactionButtons";
 import TimeAgo from "../posts/timeAgo";
 
