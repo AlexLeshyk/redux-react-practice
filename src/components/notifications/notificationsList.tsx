@@ -17,6 +17,7 @@ const NotificationsList = () => {
   const users = useSelector(selectAllUsers);
 
   useLayoutEffect(() => {
+    //@ts-ignore
     dispatch(allNotificationsRead());
   });
 

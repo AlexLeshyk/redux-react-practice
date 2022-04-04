@@ -4,7 +4,7 @@ import { useActions } from "../../hooks/useAction";
 import { useUsersList } from "../../hooks/useUsersList";
 import { RootState } from "../../store";
 import { IUser } from "../../types/users";
-import Modal from "../common/modal/mortal";
+import Modal from "../common/modal/modal";
 import Portal from "../common/modal/portal";
 import TodoList from "../todoList";
 import UserForm from "../userForm";
